@@ -2,6 +2,9 @@ package edu.eci.ieti.taskPlannerBack.Entities;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public interface UserServices {
     List<User> getUsersList();
     

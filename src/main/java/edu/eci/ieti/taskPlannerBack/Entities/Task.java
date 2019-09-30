@@ -3,11 +3,18 @@ package edu.eci.ieti.taskPlannerBack.Entities;
 import java.util.Date;
 
 public class Task {
+    private String id;
     private String activity;
     private String state;
     private Date date;
     private User owner;
     public Task(){
+    }
+    public String getId(){
+        return id;
+    }
+    public void setId(String id){
+        this.id=id;
     }
     public String getActivity(){
         return activity;
