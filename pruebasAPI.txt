@@ -1,0 +1,10 @@
+
+curl -i -X POST -HContent-Type:application/json -HAccept:application/json localhost:8080/User -d "{"""id""":"""1""","""name""":"""a""","""email""":"""a@b.com""","""password""":"""12"""}"
+curl -i -X POST -HContent-Type:application/json -HAccept:application/json localhost:8080/User -d "{"""id""":"""2""","""name""":"""b""","""email""":"""b@b.com""","""password""":"""12"""}"
+curl -i -X POST -HContent-Type:application/json -HAccept:application/json localhost:8080/UUser -d "{"""id""":"""2""","""name""":"""c""","""email""":"""b@b.com""","""password""":"""123"""}"
+curl -i -X POST -HContent-Type:application/json -HAccept:application/json localhost:8080/RUser/1 
+curl -i -X POST -HContent-Type:application/json -HAccept:application/json localhost:8080/RTask/1234 
+curl -i -X POST -HContent-Type:application/json -HAccept:application/json localhost:8080/UTask -d "{"""id""":"""1235""","""activity""":"""rest""","""state""":"""Finished""","""date""":"""2019-10-01T23:23:37.461+0000""","""owner""":{}}"
+
+
+

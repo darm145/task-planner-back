@@ -1,6 +1,7 @@
 package edu.eci.ieti.taskPlannerBack;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.context.annotation.Scope;
@@ -12,8 +13,33 @@ import edu.eci.ieti.taskPlannerBack.Entities.User;
 @Component
 @Scope("singleton")
 public class volatileDatabase implements databaseConnection {
-    ArrayList<User> users=new ArrayList<User>();
-    ArrayList<Task> tasks=new ArrayList<Task>();
+    ArrayList<User> users;
+    ArrayList<Task> tasks;
+    public volatileDatabase(){
+        users=new ArrayList<User>();
+        tasks=new ArrayList<Task>();
+        User u=new User();
+        u.setId("123");
+        u.setEmail("dd@hotmail.com");
+        u.setName("dd");
+        u.setPassword("password");
+        users.add(u);
+        Task t=new Task();
+        t.setActivity("work");
+        t.setId("1234");
+        t.setDate(new Date());
+        t.setState("In progress");
+        tasks.add(t);
+        assignTaskToUser("1234", u);
+        Task t2=new Task();
+        t2.setActivity("rest");
+        t2.setId("1235");
+        t2.setDate(new Date());
+        t2.setState("Finished");
+        tasks.add(t2);
+        assignTaskToUser("1235", u);
+    }
+    
     @Override
     public List<Task> geTasksList() {
         return tasks;
@@ -67,17 +93,18 @@ public class volatileDatabase implements databaseConnection {
 
     @Override
     public Task updateTask(Task task) {
-        Task toBeUpdated=null;
+        int index=-1;
         for(Task t:tasks){
             if(t.getId().equals(task.getId())){
-                toBeUpdated=t;
+                index=tasks.indexOf(t);
                 break;
             }
         }
-        if(!toBeUpdated.equals(null)){
-            toBeUpdated=task;
+        if(index!=-1){
+            tasks.set(index,task);
+            return task;
         }
-        return toBeUpdated;
+        return null;
     }
 
     @Override
@@ -103,17 +130,19 @@ public class volatileDatabase implements databaseConnection {
 
     @Override
     public User updateUser(User user) {
-        User toBeUpdated=null;
+        int index=-1;
         for(User u:users){
             if(u.getId().equals(user.getId())){
-                toBeUpdated=u;
+                index=users.indexOf(u);
                 break;
             }
         }
-        if(!toBeUpdated.equals(null)){
-            toBeUpdated=user;
+        if(index!=-1){
+            users.set(index,user);
+            return user;
         }
-        return toBeUpdated;
+        return null;
+
     }
 
     @Override
