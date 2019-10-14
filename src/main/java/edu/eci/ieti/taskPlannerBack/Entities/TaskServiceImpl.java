@@ -41,5 +41,10 @@ public class TaskServiceImpl implements TaskService {
     public Task updateTask(Task task) {
         return database.updateTask(task);
     }
+
+    @Override
+    public Task addTask(Task task) {
+        return database.addTask(task);
+    }
     
 }

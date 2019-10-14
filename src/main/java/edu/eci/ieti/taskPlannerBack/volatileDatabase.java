@@ -19,7 +19,7 @@ public class volatileDatabase implements databaseConnection {
         users=new ArrayList<User>();
         tasks=new ArrayList<Task>();
         User u=new User();
-        u.setId("123");
+       
         u.setEmail("dd@hotmail.com");
         u.setName("dd");
         u.setPassword("password");
@@ -59,7 +59,7 @@ public class volatileDatabase implements databaseConnection {
     public List<Task> getTasksByUserId(String userId) {
         ArrayList<Task> usertasks=new ArrayList<Task>();
         for(Task t: tasks){
-            if(t.getOwner().getId().equals(userId)){
+            if(t.getOwner().getEmail().equals(userId)){
                 usertasks.add(t);
             }
         }
@@ -115,7 +115,7 @@ public class volatileDatabase implements databaseConnection {
     @Override
     public User getUserById(String userId) {
         for(User u:users){
-            if (u.getId().equals(userId)){
+            if (u.getEmail().equals(userId)){
                 return u;
             }
         }
@@ -132,7 +132,7 @@ public class volatileDatabase implements databaseConnection {
     public User updateUser(User user) {
         int index=-1;
         for(User u:users){
-            if(u.getId().equals(user.getId())){
+            if(u.getEmail().equals(user.getEmail())){
                 index=users.indexOf(u);
                 break;
             }
@@ -149,7 +149,7 @@ public class volatileDatabase implements databaseConnection {
     public void removeUser(String userId) {
         User toBeRemoved=null;
         for(User u:users){
-            if(u.getId().equals(userId)){
+            if(u.getEmail().equals(userId)){
                 toBeRemoved=u;
                 break;
             }
@@ -158,6 +158,12 @@ public class volatileDatabase implements databaseConnection {
             users.remove(toBeRemoved);
         }
 
+    }
+
+    @Override
+    public Task addTask(Task task) {
+        tasks.add(task);
+        return task;
     }
     
 }

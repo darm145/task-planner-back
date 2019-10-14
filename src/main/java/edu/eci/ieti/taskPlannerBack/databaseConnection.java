@@ -29,5 +29,7 @@ public interface databaseConnection{
     User updateUser(User user);
     
     void removeUser(String userId);
+
+	Task addTask(Task task);
     
 }
