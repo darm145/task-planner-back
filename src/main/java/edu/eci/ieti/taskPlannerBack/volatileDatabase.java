@@ -28,14 +28,14 @@ public class volatileDatabase implements databaseConnection {
         t.setActivity("work");
         t.setId("1234");
         t.setDate(new Date());
-        t.setState("In progress");
+        t.setState("In Progress");
         tasks.add(t);
         assignTaskToUser("1234", u);
         Task t2=new Task();
         t2.setActivity("rest");
         t2.setId("1235");
         t2.setDate(new Date());
-        t2.setState("Finished");
+        t2.setState("Completed");
         tasks.add(t2);
         assignTaskToUser("1235", u);
     }
