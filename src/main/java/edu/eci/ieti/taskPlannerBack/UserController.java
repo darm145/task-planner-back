@@ -49,8 +49,8 @@ public class UserController {
 	@RequestMapping(value = "/User", method = RequestMethod.POST)
 	public ResponseEntity<?> saveUser(@RequestBody User u) {
 		try {
-			UserServices.createUser(u);
-			return new ResponseEntity<>(HttpStatus.CREATED);
+			
+			return new ResponseEntity<>(UserServices.createUser(u),HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>("error", HttpStatus.NOT_FOUND);
 
