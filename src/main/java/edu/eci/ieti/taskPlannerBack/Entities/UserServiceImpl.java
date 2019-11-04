@@ -5,36 +5,39 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import edu.eci.ieti.taskPlannerBack.databaseConnection;
+import edu.eci.ieti.taskPlannerBack.Persistence.UserMongoRepo;
+import edu.eci.ieti.taskPlannerBack.Persistence.databaseConnection;
+
+
 
 @Component
 public class UserServiceImpl implements UserServices {
     @Autowired
-    databaseConnection database;
+    UserMongoRepo database;
 
     @Override
     public List<User> getUsersList() {
-        return database.getUsersList();
+        return database.findAll();
     }
 
     @Override
     public User getUserById(String userId) {
-        return database.getUserById(userId);
+        return database.findByEmail(userId);
     }
 
     @Override
     public User createUser(User user) {
-        return database.createUser(user);
+        return database.save(user);
     }
 
     @Override
     public User updateUser(User user) {
-        return database.updateUser(user);
+        return database.save(user);
     }
 
     @Override
     public void removeUser(String userId) {
-        database.removeUser(userId);
+        database.deleteById(userId);
     }
 
 }

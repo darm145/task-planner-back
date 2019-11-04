@@ -1,4 +1,4 @@
-package edu.eci.ieti.taskPlannerBack;
+package edu.eci.ieti.taskPlannerBack.Controllers;
 
 import java.util.Date;
 

@@ -2,12 +2,18 @@ package edu.eci.ieti.taskPlannerBack.Entities;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+@Document
+
 public class Task {
+    @Id
     private String id;
     private String activity;
     private String state;
     private Date date;
     private User owner;
+    private String imageId;
     public Task(){
     }
     public String getId(){
@@ -40,5 +46,13 @@ public class Task {
     }
     public void setOwner(User owner){
         this.owner=owner;
+    }
+
+    public String getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
     }
 }
